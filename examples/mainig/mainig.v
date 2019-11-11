@@ -54,7 +54,7 @@ fn setup_main_loop() {
 	C.ImGui_ImplOpenGL3_Init(glsl_version.str)
 	// Our state
 	for !state.done {
-		ev := vsdl2.SdlEvent{}
+		ev := vsdl2.Event{}
 		for 0 < C.SDL_PollEvent(&ev) {
 			C.ImGui_ImplSDL2_ProcessEvent(&ev)
 			match int(ev._type) {
