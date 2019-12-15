@@ -40,16 +40,14 @@ fn C.igGetDrawData() voidptr
 fn C.ImGui_ImplOpenGL3_RenderDrawData(draw_data voidptr)
 
 pub struct C.ImVec2 {
-pub:
-mut:
+pub mut:
         x f32
         y f32
 }
 
 //struct C.ImVec2 {
 pub struct ImVecTwo {
-pub:
-mut:
+pub mut:
         x f32
         y f32
 }
@@ -57,15 +55,13 @@ mut:
 //type ImVecTwo C.ImVec2
 
 pub struct ImVec2 {
-pub:
-mut:
+pub mut:
         x f32
         y f32
 }
 
 pub struct ImVec4 {
-pub:
-mut:
+pub mut:
         x f32
         y f32
         z f32
@@ -80,8 +76,7 @@ type ImGuiBackendFlags int
 
 pub struct C.ImGuiIO {
 //pub struct ImGuiIO {
-pub:
-mut:
+pub mut:
     ConfigFlags ImGuiConfigFlags
     BackendFlags ImGuiBackendFlags
     DisplaySize ImVec2
