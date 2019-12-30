@@ -15,9 +15,12 @@
 // https://github.com/ocornut/imgui
 
 #pragma once
-
+#if 1
+#include <SDL.h>
+#else
 struct SDL_Window;
 typedef union SDL_Event SDL_Event;
+#endif
 
 IMGUI_IMPL_API bool     ImGui_ImplSDL2_InitForOpenGL(SDL_Window* window, void* sdl_gl_context);
 IMGUI_IMPL_API bool     ImGui_ImplSDL2_InitForVulkan(SDL_Window* window);
