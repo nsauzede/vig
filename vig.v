@@ -165,7 +165,7 @@ pub mut:
     ImVector_ImWchar InputQueueCharacters
 */
 }
-type ImGuiIo C.ImGuiIO
+pub type ImGuiIo C.ImGuiIO
 
 pub fn ig_get_io() &ImGuiIo {
 	return C.igGetIO()
