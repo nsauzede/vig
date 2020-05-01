@@ -57,7 +57,7 @@ fn setup_main_loop() {
 		ev := vsdl2.Event{}
 		for 0 < C.SDL_PollEvent(&ev) {
 			C.ImGui_ImplSDL2_ProcessEvent(&ev)
-			match int(ev._type) {
+			match int(ev.@type) {
 				C.SDL_QUIT {
 					state.done = true
 					break
@@ -103,7 +103,7 @@ fn (state mut AppState) imgui_frame(){
 		C.igEnd()
 	}
 	// 3. Show another simple window.
-	if (state.show_another_window) {
+	if state.show_another_window {
 		C.igBegin("Another Vindow", &state.show_another_window, 0)   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 		C.igText("Hello from another Vindow!")
 //		if C.igButton("Close Me", state.size0) {

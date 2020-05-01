@@ -29,7 +29,8 @@ fn C.ImGui_ImplSDL2_NewFrame(window voidptr)
 fn C.igNewFrame()
 fn C.igShowDemoWindow(p_open voidptr)
 fn C.igBegin(name byteptr, p_open voidptr, flags int) bool
-fn C.igText(fmt byteptr, ...)
+//fn C.igText(fmt byteptr, ...)
+fn C.igText()
 fn C.igSliderFloat(label byteptr, v voidptr, v_min f32, v_max f32, format byteptr, power f32) bool
 fn C.igColorEdit3(label byteptr, col voidptr, flags int) bool
 fn C.igButton(label byteptr, size C.ImVec2) bool
@@ -38,6 +39,11 @@ fn C.igEnd()
 fn C.igRender()
 fn C.igGetDrawData() voidptr
 fn C.ImGui_ImplOpenGL3_RenderDrawData(draw_data voidptr)
+fn C.glViewport()
+fn C.glClear()
+fn C.glClearColor()
+fn C.glewInit() int
+fn C.nk_window_get_bounds() C.nk_rect
 
 pub struct C.ImVec2 {
 pub mut:
