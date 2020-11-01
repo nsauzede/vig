@@ -72,7 +72,7 @@ fn setup_main_loop() {
 }
 
 [live]
-fn (state mut AppState) imgui_frame(){
+fn (mut state AppState) imgui_frame(){
 	mut size0 := C.ImVec2{}
 	size0.x = state.size0.x
 	size0.y = state.size0.y

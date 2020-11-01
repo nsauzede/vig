@@ -77,8 +77,8 @@ pub mut:
 //type ImVec4 C.ImVec4
 //type ImVec4 ImVec4
 
-type ImGuiConfigFlags int
-type ImGuiBackendFlags int
+type ImGuiConfigFlags = int
+type ImGuiBackendFlags = int
 
 pub struct C.ImGuiIO {
 //pub struct ImGuiIO {
@@ -171,7 +171,7 @@ pub mut:
     ImVector_ImWchar InputQueueCharacters
 */
 }
-pub type ImGuiIo C.ImGuiIO
+pub type ImGuiIo = C.ImGuiIO
 
 pub fn ig_get_io() &ImGuiIo {
 	return C.igGetIO()
