@@ -30,10 +30,10 @@ cimgui/bld/cimgui.so:
 	[ -d cimgui ] || git clone --recursive https://github.com/cimgui/cimgui.git
 	(export CFLAGS= CXXFLAGS= ; cd cimgui ; mkdir bld ; cd bld ; cmake .. ; make)
 
-imgui_impl_sdl.o: $(IMGUI)/examples/imgui_impl_sdl.cpp
+imgui_impl_sdl.o: $(IMGUI)/backends/imgui_impl_sdl.cpp
 	$(CXX) -fPIC -c -o $@ $^ -I$(IMGUI) `sdl2-config --cflags` -DIMGUI_IMPL_API=extern\ \"C\" -fno-threadsafe-statics
 
-imgui_impl_opengl3.o: $(IMGUI)/examples/imgui_impl_opengl3.cpp
+imgui_impl_opengl3.o: $(IMGUI)/backends/imgui_impl_opengl3.cpp
 	$(CXX) -fPIC -c -o $@ $^ -I$(IMGUI) -DIMGUI_IMPL_API=extern\ \"C\" -fno-threadsafe-statics
 
 imgui_impl_opengl3.so: imgui_impl_opengl3.o

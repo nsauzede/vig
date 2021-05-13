@@ -18,7 +18,7 @@ struct AppState{
 	done bool
 	show_another_window bool
 	counter int
-	io &vig.ImGuiIo
+	io &vig.ImGuiIo = voidptr(0)
 	window voidptr
 }
 
