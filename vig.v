@@ -9,8 +9,8 @@ module vig
 #flag linux -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS=1
 #flag linux -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 #flag linux -DIMGUI_IMPL_API=
-#flag linux nsauzede/vig/imgui_impl_sdl.o nsauzede/vig/imgui_impl_opengl3.so nsauzede/vig/cimgui.so
-#flag linux -lGL -lGLEW -lm
+//#flag linux nsauzede/vig/imgui_impl_sdl.o nsauzede/vig/imgui_impl_opengl3.so nsauzede/vig/cimgui.so
+#flag linux -lGL -lGLEW -lm -ldl
 #include "cimgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"

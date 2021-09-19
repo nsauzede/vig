@@ -6,8 +6,8 @@
 module main
 import nsauzede.vsdl2
 import nsauzede.vig
-import os
-import time
+//import os
+//#import time
 
 struct AppState{
 	show_demo_window bool
@@ -42,7 +42,7 @@ fn setup_main_loop() {
 	C.SDL_GL_SetAttribute(C.SDL_GL_DEPTH_SIZE, 24)
 	C.SDL_GL_SetAttribute(C.SDL_GL_STENCIL_SIZE, 8)
 	window_flags := C.SDL_WINDOW_OPENGL | C.SDL_WINDOW_RESIZABLE | C.SDL_WINDOW_ALLOW_HIGHDPI
-	state.window = C.SDL_CreateWindow("Live! V ImGui+SDL2+OpenGL3 demo", C.SDL_WINDOWPOS_CENTERED, C.SDL_WINDOWPOS_CENTERED, 600, 400, window_flags)
+	state.window = C.SDL_CreateWindow(c"Live! V ImGui+SDL2+OpenGL3 demo", C.SDL_WINDOWPOS_CENTERED, C.SDL_WINDOWPOS_CENTERED, 600, 400, window_flags)
 	gl_context := C.SDL_GL_CreateContext(state.window)
 	C.SDL_GL_MakeCurrent(state.window, gl_context)
 	C.SDL_GL_SetSwapInterval(1) // Enable vsync
@@ -57,7 +57,7 @@ fn setup_main_loop() {
 		ev := vsdl2.Event{}
 		for 0 < C.SDL_PollEvent(&ev) {
 			C.ImGui_ImplSDL2_ProcessEvent(&ev)
-			match int(ev.@type) {
+			match int(unsafe{ev.@type}) {
 				C.SDL_QUIT {
 					state.done = true
 					break
@@ -86,28 +86,28 @@ fn (mut state AppState) imgui_frame(){
 	}
 	// 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
 	{
-		C.igBegin("Hello, Vorld!", C.NULL, 0)        // Create a window called "Hello, world!" and append into it.
-		C.igText("This is some useful text.")               // Display some text (you can use a format strings too)
-		C.igCheckbox("Demo Vindow", &state.show_demo_window)      // Edit bools storing our window open/close state
-		C.igCheckbox("Another Vindow", &state.show_another_window)
-		C.igSliderFloat("float", &state.f, 0.0, 1.0, 0, 0)            // Edit 1 float using a slider from 0.0f to 1.0f
-		C.igColorEdit3("clear color", &state.clear_color, 0) // Edit 3 floats representing a color
-//		if C.igButton("Button", state.size0) {                            // Buttons return true when clicked (most widgets return true when edited/activated)
+		C.igBegin(c"Hello, Vorld!", C.NULL, 0)        // Create a window called "Hello, world!" and append into it.
+		C.igText(c"This is some useful text.")               // Display some text (you can use a format strings too)
+		C.igCheckbox(c"Demo Vindow", &state.show_demo_window)      // Edit bools storing our window open/close state
+		C.igCheckbox(c"Another Vindow", &state.show_another_window)
+		C.igSliderFloat(c"float", &state.f, 0.0, 1.0, 0, 0)            // Edit 1 float using a slider from 0.0f to 1.0f
+		C.igColorEdit3(c"clear color", &state.clear_color, 0) // Edit 3 floats representing a color
+//		if C.igButton(c"Button", state.size0) {                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		//state.size0.x, state.size0.y}
-		if C.igButton("Button", size0) {                            // Buttons return true when clicked (most widgets return true when edited/activated)
+		if C.igButton(c"Button", size0) {                            // Buttons return true when clicked (most widgets return true when edited/activated)
 			state.counter++
 		}
 		C.igSameLine(0, 0)
-		C.igText("counter = %d", state.counter)
-		C.igText("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / state.io.Framerate, state.io.Framerate)
+		C.igText(c"counter = %d", state.counter)
+		C.igText(c"Application average %.3f ms/frame (%.1f FPS)", 1000.0 / state.io.Framerate, state.io.Framerate)
 		C.igEnd()
 	}
 	// 3. Show another simple window.
 	if state.show_another_window {
-		C.igBegin("Another Vindow", &state.show_another_window, 0)   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-		C.igText("Hello from another Vindow!")
-//		if C.igButton("Close Me", state.size0) {
-		if C.igButton("Close Me", size0) {
+		C.igBegin(c"Another Vindow", &state.show_another_window, 0)   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+		C.igText(c"Hello from another Vindow!")
+//		if C.igButton(c"Close Me", state.size0) {
+		if C.igButton(c"Close Me", size0) {
 			state.show_another_window = false
 		}
 		C.igEnd()
