@@ -5,12 +5,16 @@
 // The vig module uses the nice ImGui/cimgui libraries (see README.md)
 module vig
 
-#flag linux -Insauzede/vig
+#flag linux -I@VROOT
 #flag linux -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS=1
 #flag linux -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 #flag linux -DIMGUI_IMPL_API=
-//#flag linux nsauzede/vig/imgui_impl_sdl.o nsauzede/vig/imgui_impl_opengl3.so nsauzede/vig/cimgui.so
-#flag linux -lGL -lGLEW -lm -ldl
+#flag linux -L@VROOT
+//#flag linux @VROOT/imgui_impl_sdl.o @VROOT/imgui_impl_opengl3.so
+//#flag linux @VROOT/cimgui.a
+//#flag linux @VROOT/cimgui.so
+#flag linux -lcimgui -lGL -lGLEW -lm -ldl
+//#flag linux -lGL -lGLEW -lm -ldl
 #include "cimgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"

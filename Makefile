@@ -4,10 +4,13 @@
 
 TARGET:=
 TARGET+=cimgui.so
+#TARGET+=libcimgui.so
 TARGET+=cimgui.h
 TARGET+=imgui_impl_sdl.o
-TARGET+=imgui_impl_opengl3.so
+#TARGET+=imgui_impl_opengl3.so
+TARGET+=libcimgui.a
 CP:=cp
+AR:=ar
 CIMGUI:=cimgui
 IMGUI:=$(CIMGUI)/imgui
 CFLAGS:=-I.
@@ -22,6 +25,14 @@ all: $(TARGET)
 
 cimgui.so: cimgui/bld/cimgui.so
 	$(CP) $< $@
+
+libcimgui.so: cimgui/bld/cimgui.so
+	$(CP) $< $@
+
+CIG_OBJS:=$(wildcard cimgui/bld/CMakeFiles/cimgui.dir/imgui/*.cpp.o)
+#cimgui.a: $(CIG_OBJS) imgui_impl_sdl.o imgui_impl_opengl3.o cimgui/bld/CMakeFiles/cimgui.dir/cimgui.cpp.o
+libcimgui.a: imgui_impl_sdl.o imgui_impl_opengl3.o cimgui/bld/CMakeFiles/cimgui.dir/cimgui.cpp.o $(CIG_OBJS)
+	$(AR) cr $@ $^
 
 cimgui.h: cimgui/bld/cimgui.so
 	$(CP) cimgui/cimgui.h $@
