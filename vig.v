@@ -10,7 +10,7 @@ module vig
 #flag linux -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 #flag linux -DIMGUI_IMPL_API=
 #flag linux -L@VROOT
-//#flag linux @VROOT/imgui_impl_sdl.o @VROOT/imgui_impl_opengl3.so
+//#flag linux @VROOT/imgui_impl_sdl2.o @VROOT/imgui_impl_opengl3.so
 //#flag linux @VROOT/cimgui.a
 //#flag linux @VROOT/cimgui.so
 #flag linux -lcimgui -lGL -lGLEW -lm -ldl

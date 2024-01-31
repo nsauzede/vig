@@ -15,7 +15,25 @@ Current APIs available/tested in examples :
 # Examples
 
 See in examples/mainig_v/mainig_v.v
-This is a V port of ImGui example_sdl_opengl3
+This is a V port of ImGui example_sdl2_opengl3
+
+How to test `vig` on linux : (prerequisite : v is already installed and in the PATH)
+```
+$ v install nsauzede.vsdl2
+$ v install nsauzede.vig
+$ cd ~/.vmodules/nsauzede/vig
+$ make
+$ LD_LIBRARY_PATH=. v run examples/mainig/mainig.v
+```
+
+There is also a hot-reload mode (-live) :
+```
+$ cd ~/.vmodules/nsauzede/vig
+$ LD_LIBRARY_PATH=. v -live run examples/mainig/mainig.v
+```
+In hot-reload mode, once the vig demo windows is shown, try to modify the `live_main` function (tagged with `[live]`)
+to see the "live" changes appearing a few instants after saving the source file.
+Enjoy !
 
 # Dependencies
 Ubuntu :
