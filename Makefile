@@ -38,7 +38,7 @@ cimgui.h: cimgui/bld/cimgui.so
 	$(CP) cimgui/cimgui.h $@
 
 cimgui/bld/cimgui.so:
-	[ -d cimgui ] || git clone --recursive https://github.com/cimgui/cimgui.git
+	[ -d cimgui ] || git clone --filter=tree:0 --recursive https://github.com/cimgui/cimgui.git
 	(export CFLAGS= CXXFLAGS= ; cd cimgui ; mkdir bld ; cd bld ; cmake .. ; make)
 
 imgui_impl_sdl2.o: $(IMGUI)/backends/imgui_impl_sdl2.cpp
